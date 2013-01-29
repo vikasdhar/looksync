@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+C:\Users\Florence\workspace\looksync\.metadata\.plugins\org.eclipse.jdt.core
+2751382638.index
+2307261394.index
+3352491446.index
