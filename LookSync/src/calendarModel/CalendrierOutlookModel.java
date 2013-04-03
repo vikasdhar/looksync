@@ -4,6 +4,16 @@ package calendarModel;
 //Inspire de la structure de calendrier Outlook, donc devrait fonctionner pour une synchronisation Outlook...
 
 public class CalendrierOutlookModel {
+	@Override
+	public String toString() {
+		return "CalendrierOutlookModel [sujet=" + sujet + ", message="
+				+ message + ", lieu=" + lieu + ", debut=" + debut + ", fin="
+				+ fin + ", rappel=" + rappel + ", rappelAvantDebut="
+				+ rappelAvantDebut + ", son=" + son + ", importance="
+				+ importance + ", statut=" + statut + "]";
+	}
+
+
 	private String sujet;
 
     public String getSujet() {

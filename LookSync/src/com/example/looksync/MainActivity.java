@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
          
     coucou = new TextView(this);
-    coucou.setText("Bonjour, vous me devez 1 000 000€.");
+    coucou.setText("Bonjour, vous avez lancé l'aplication LookSync.");
     setContentView(coucou);
   }
  
