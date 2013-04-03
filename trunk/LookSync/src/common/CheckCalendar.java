@@ -1,6 +1,7 @@
 package common;
 
 import android.database.Cursor;
+import android.net.Uri;
 
 //verifie si l'utilisateur a un calendrier installe sur le telephone ou non
 //si pas de calendrier, pas la peine de faire une synchronisation...
@@ -33,4 +34,35 @@ public class CheckCalendar {
 		
 		return 0;
 	}
+	
+	//récupère la liste de calendriers/vérifie les urls à utiliser
+	//cf. MainCalendar.java
+	/*retrieve a list of available calendars*/
+    /*private MyCalendar m_calendars[];
+    private String m_selectedCalendarId = "0";
+    private void getCalendars() {
+    	String[] l_projection = new String[]{"_id", "displayName"};
+    	Uri l_calendars;
+    	/////if (Build.VERSION.SDK_INT >= 8) {
+    		l_calendars = Uri.parse("content://com.android.calendar/calendars");
+    	} else {
+    		l_calendars = Uri.parse("content://calendar/calendars");
+    	}
+    	Cursor l_managedCursor = this.managedQuery(l_calendars, l_projection, null, null, null);	//all calendars
+    	//Cursor l_managedCursor = this.managedQuery(l_calendars, l_projection, "selected=1", null, null);   //active calendars
+    	if (l_managedCursor.moveToFirst()) {
+    		m_calendars = new MyCalendar[l_managedCursor.getCount()];
+    		String l_calName;
+    		String l_calId;
+    		int l_cnt = 0;
+    		int l_nameCol = l_managedCursor.getColumnIndex(l_projection[1]);
+    		int l_idCol = l_managedCursor.getColumnIndex(l_projection[0]);
+    		do {
+    			l_calName = l_managedCursor.getString(l_nameCol);
+    			l_calId = l_managedCursor.getString(l_idCol);
+    			m_calendars[l_cnt] = new MyCalendar(l_calName, l_calId);
+    			++l_cnt;
+    		} while (l_managedCursor.moveToNext());
+    	}
+    }*/
 }
