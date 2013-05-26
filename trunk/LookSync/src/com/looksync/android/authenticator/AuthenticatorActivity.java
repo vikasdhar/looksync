@@ -23,6 +23,12 @@ import com.example.android.common.R;
 import com.looksync.android.common.Constants;
 import com.looksync.android.common.NetworkUtilities;
 
+
+
+import com.independentsoft.exchange.Service;
+
+
+
 //voir exemple: SampleSyncAdapter
 //activité demandant les identifiants à l'utilisateur
 /**
@@ -40,8 +46,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 	
 	
 	public static final String PARAM_CONFIRMCREDENTIALS = "confirmCredentials";
-    public static final String PARAM_PASSWORD = "password";
-    public static final String PARAM_USERNAME = "username";
+    public static final String PARAM_PASSWORD = "Utilisatéur428"; //"password";
+    public static final String PARAM_USERNAME = "LOOKSYNC\\Administrateur"; //"username";
     public static final String PARAM_AUTHTOKEN_TYPE = "authtokenType";
 
     private static final String TAG = "AuthenticatorActivity";
@@ -136,10 +142,14 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         } else {
             showProgress();
             // Start authenticating...
-/*            mAuthThread =
-                NetworkUtilities.attemptAuth(mUsername, mPassword, mHandler,
-                    AuthenticatorActivity.this);
-*/        }
+Service service = new Service("https://myserver/ews/Exchange.asmx", "username", "password");
+Log.v(TAG, "Successful authentication");
+
+//            mAuthThread =
+//        		NetworkUtilities.attemptAuth(mUsername, mPassword);
+                //NetworkUtilities.attemptAuth(mUsername, mPassword, mHandler,
+                    //AuthenticatorActivity.this);
+        }
     }
 
     /**

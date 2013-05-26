@@ -1,6 +1,7 @@
 package com.looksync.android.common;
 
 import android.accounts.Account;
+import android.content.Context;
 /*import android.content.Context;
 import android.os.Handler;*/
 import android.util.Log;
@@ -24,6 +25,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.looksync.android.common.NetworkUtilities;
 import com.looksync.android.authenticator.AuthenticatorActivity;
 //import org.json.JSONObject;
 
@@ -37,6 +39,7 @@ import java.util.TimeZone;
 
 import android.graphics.Bitmap; //
 import android.graphics.BitmapFactory; //
+import android.os.Handler;
 import android.text.TextUtils; //
 
 import java.io.BufferedReader; //
@@ -49,6 +52,10 @@ import java.net.MalformedURLException; //
 import java.net.URL; //
 import java.util.ArrayList; //
 
+
+
+
+
 //voir exemple: SampleSyncAdapter
 //utilisé par l'exemple SampleSyncAdapter pour se connecter à des serveurs tiers
 /**
@@ -58,9 +65,9 @@ public class NetworkUtilities {
 	/** The tag used to log to adb console. */
     private static final String TAG = "NetworkUtilities";
     /** POST parameter name for the user's account name */
-    public static final String PARAM_USERNAME = "username";
+    public static final String PARAM_USERNAME = "LOOKSYNC\\Administrateur"; //"username";
     /** POST parameter name for the user's password */
-    public static final String PARAM_PASSWORD = "password";
+    public static final String PARAM_PASSWORD = "Utilisatéur428"; //"password";
     //public static final String PARAM_UPDATED = "timestamp";
     //public static final String USER_AGENT = "AuthenticationService/1.0";
     //public static final int REGISTRATION_TIMEOUT = 30 * 1000; // ms
@@ -73,9 +80,10 @@ public class NetworkUtilities {
     /** Timeout (in ms) we specify for each http request */
     public static final int HTTP_REQUEST_TIMEOUT_MS = 30 * 1000; //
     /** Base URL for the v2 Sample Sync Service */
-    public static final String BASE_URL = "https://samplesyncadapter2.appspot.com"; //"https://samplesyncadapter.appspot.com";
+    public static final String BASE_URL = 
+    		"https://213.245.163.98"; //"https://samplesyncadapter2.appspot.com";
     /** URI for authentication service */
-    public static final String AUTH_URI = BASE_URL + "/auth";
+    public static final String AUTH_URI = BASE_URL + "/owa"; //"/auth";
     //public static final String FETCH_FRIEND_UPDATES_URI =
     	//BASE_URL + "/fetch_friend_updates";
     //public static final String FETCH_STATUS_URI = BASE_URL + "/fetch_status";
@@ -115,7 +123,7 @@ public class NetworkUtilities {
      * @param runnable The runnable instance containing network mOperations to
      *        be executed.
      */
-    /*public static Thread performOnBackgroundThread(final Runnable runnable) {
+    public static Thread performOnBackgroundThread(final Runnable runnable) {
         final Thread t = new Thread() {
             @Override
             public void run() {
@@ -128,7 +136,7 @@ public class NetworkUtilities {
         };
         t.start();
         return t;
-    }*/
+    }
     
     /**
      * Connects to the SampleSync test server, authenticates the provided
@@ -142,11 +150,12 @@ public class NetworkUtilities {
      * //@return boolean The boolean result indicating whether the user was
      * //        successfully authenticated.
      */
-    public static String authenticate(String username, String password) {
+//    public static Service authenticate(String username, String password) {
+    //public static String authenticate(String username, String password) {
     //public static boolean authenticate(String username, String password,
         //Handler handler, final Context context) {
-        	
-        final HttpResponse resp;
+        
+/*        final HttpResponse resp;
         final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair(PARAM_USERNAME, username));
         params.add(new BasicNameValuePair(PARAM_PASSWORD, password));
@@ -171,19 +180,19 @@ public class NetworkUtilities {
                     BufferedReader ireader = new BufferedReader(new InputStreamReader(istream));
                     authToken = ireader.readLine().trim();
                 }
-                /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
+*/                /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Successful authentication");
                 }
                 sendResult(true, handler, context);
                 return true;*/
-            } /*else {
+/*            }*/ /*else {
                 if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Error authenticating" + resp.getStatusLine());
                 }
                 sendResult(false, handler, context);
                 return false;
             }*/
-            if ((authToken != null) && (authToken.length() > 0)) {
+/*            if ((authToken != null) && (authToken.length() > 0)) {
                 Log.v(TAG, "Successful authentication");
                 return authToken;
             } else {
@@ -193,18 +202,60 @@ public class NetworkUtilities {
         } catch (final IOException e) {
             Log.e(TAG, "IOException when getting authtoken", e);
             return null;
-            /*f (Log.isLoggable(TAG, Log.VERBOSE)) {
+*/            /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
                 Log.v(TAG, "IOException when getting authtoken", e);
             }
             sendResult(false, handler, context);
             return false;*/
-        } finally {
+/*        } finally {
             Log.v(TAG, "getAuthtoken completing");
-            /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
+*/            /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
                 Log.v(TAG, "getAuthtoken completing");
             }*/
+//        }
+//    }
+    
+    /**
+     * Sends the authentication response from server back to the caller main UI
+     * thread through its handler.
+     * 
+     * @param result The boolean holding authentication result
+     * @param handler The main UI thread's handler instance.
+     * @param context The caller Activity's context.
+     */
+    /*private static void sendResult(final Boolean result, final Handler handler,
+        final Context context) {
+        if (handler == null || context == null) {
+            return;
         }
-    }
+        handler.post(new Runnable() {
+            public void run() {
+                ((AuthenticatorActivity) context).onAuthenticationResult(result);
+            }
+        });
+    }*/
+
+    /**
+     * Attempts to authenticate the user credentials on the server.
+     * 
+     * @param username The user's username
+     * @param password The user's password to be authenticated
+     * @param handler The main UI thread's handler instance.
+     * @param context The caller Activity's context
+     * @return Thread The thread on which the network mOperations are executed.
+     */
+/*    public static Thread attemptAuth(final String username,
+		final String password) {
+    //public static Thread attemptAuth(final String username,
+        //final String password, final Handler handler, final Context context) {
+        final Runnable runnable = new Runnable() {
+            public void run() {
+            	authenticate(username, password); //authenticate(username, password, handler, context);
+            }
+        };
+        // run on background thread.
+        return NetworkUtilities.performOnBackgroundThread(runnable);
+    } //*/
 
     /**
      * Perform 2-way sync with the server-side contacts. We send a request that
