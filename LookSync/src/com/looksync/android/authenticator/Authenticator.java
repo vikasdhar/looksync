@@ -113,7 +113,7 @@ public class Authenticator extends AbstractAccountAuthenticator{
         final AccountManager am = AccountManager.get(mContext);
         final String password = am.getPassword(account);
         if (password != null) {
-            final String authToken = NetworkUtilities.authenticate(account.name, password);
+/*            final String authToken = NetworkUtilities.authenticate(account.name, password);
             //final boolean verified =
             //	onlineConfirmPassword(account.name, password);
             if (!TextUtils.isEmpty(authToken)) { //if (verified) {
@@ -123,7 +123,7 @@ public class Authenticator extends AbstractAccountAuthenticator{
                 result.putString(AccountManager.KEY_AUTHTOKEN, authToken); //, password
                 return result;
             }
-        }
+*/        }
 
         // If we get here, then we couldn't access the user's password - so we
         // need to re-prompt them for their credentials. We do that by creating
