@@ -92,8 +92,8 @@ public class NetworkUtilities {
     public static final String SYNC_CONTACTS_URI = BASE_URL + "/sync"; //
 
     
-    private NetworkUtilities() {
-    } //
+    /*private NetworkUtilities() {
+    } //*/
 
     /**
      * Configures the httpClient to connect to the URL provided.
@@ -108,14 +108,14 @@ public class NetworkUtilities {
             ConnManagerParams.setTimeout(params, REGISTRATION_TIMEOUT);
         }
     }*/
-    public static HttpClient getHttpClient() {
+    /*public static HttpClient getHttpClient() {
         HttpClient httpClient = new DefaultHttpClient();
         final HttpParams params = httpClient.getParams();
         HttpConnectionParams.setConnectionTimeout(params, HTTP_REQUEST_TIMEOUT_MS);
         HttpConnectionParams.setSoTimeout(params, HTTP_REQUEST_TIMEOUT_MS);
         ConnManagerParams.setTimeout(params, HTTP_REQUEST_TIMEOUT_MS);
         return httpClient;
-    } //
+    }*/
 
     /**
      * Executes the network requests on a separate thread.
@@ -123,7 +123,7 @@ public class NetworkUtilities {
      * @param runnable The runnable instance containing network mOperations to
      *        be executed.
      */
-    public static Thread performOnBackgroundThread(final Runnable runnable) {
+    /*public static Thread performOnBackgroundThread(final Runnable runnable) {
         final Thread t = new Thread() {
             @Override
             public void run() {
@@ -136,7 +136,7 @@ public class NetworkUtilities {
         };
         t.start();
         return t;
-    }
+    }*/
     
     /**
      * Connects to the SampleSync test server, authenticates the provided
@@ -150,12 +150,12 @@ public class NetworkUtilities {
      * //@return boolean The boolean result indicating whether the user was
      * //        successfully authenticated.
      */
-//    public static Service authenticate(String username, String password) {
+    /*public static Service authenticate(String username, String password) {
     //public static String authenticate(String username, String password) {
     //public static boolean authenticate(String username, String password,
         //Handler handler, final Context context) {
         
-/*        final HttpResponse resp;
+        final HttpResponse resp;
         final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair(PARAM_USERNAME, username));
         params.add(new BasicNameValuePair(PARAM_PASSWORD, password));
@@ -180,19 +180,19 @@ public class NetworkUtilities {
                     BufferedReader ireader = new BufferedReader(new InputStreamReader(istream));
                     authToken = ireader.readLine().trim();
                 }
-*/                /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
+                /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Successful authentication");
                 }
                 sendResult(true, handler, context);
                 return true;*/
-/*            }*/ /*else {
+    		/*}*/ /*else {
                 if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Error authenticating" + resp.getStatusLine());
                 }
                 sendResult(false, handler, context);
                 return false;
             }*/
-/*            if ((authToken != null) && (authToken.length() > 0)) {
+    		/*if ((authToken != null) && (authToken.length() > 0)) {
                 Log.v(TAG, "Successful authentication");
                 return authToken;
             } else {
@@ -202,18 +202,18 @@ public class NetworkUtilities {
         } catch (final IOException e) {
             Log.e(TAG, "IOException when getting authtoken", e);
             return null;
-*/            /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
+            *//*if (Log.isLoggable(TAG, Log.VERBOSE)) {
                 Log.v(TAG, "IOException when getting authtoken", e);
             }
             sendResult(false, handler, context);
             return false;*/
-/*        } finally {
+    	/*} finally {
             Log.v(TAG, "getAuthtoken completing");
-*/            /*if (Log.isLoggable(TAG, Log.VERBOSE)) {
+            *//*if (Log.isLoggable(TAG, Log.VERBOSE)) {
                 Log.v(TAG, "getAuthtoken completing");
             }*/
-//        }
-//    }
+        /*}
+    }*/
     
     /**
      * Sends the authentication response from server back to the caller main UI
@@ -244,7 +244,7 @@ public class NetworkUtilities {
      * @param context The caller Activity's context
      * @return Thread The thread on which the network mOperations are executed.
      */
-/*    public static Thread attemptAuth(final String username,
+    /*public static Thread attemptAuth(final String username,
 		final String password) {
     //public static Thread attemptAuth(final String username,
         //final String password, final Handler handler, final Context context) {
@@ -341,7 +341,7 @@ public class NetworkUtilities {
      * @param avatarUrl the URL pointing to the avatar image
      * @return a byte array with the raw JPEG avatar image
      */
-    public static byte[] downloadAvatar(final String avatarUrl) {
+    /*public static byte[] downloadAvatar(final String avatarUrl) {
         // If there is no avatar, we're done
         if (TextUtils.isEmpty(avatarUrl)) {
             return null;
@@ -384,5 +384,5 @@ public class NetworkUtilities {
             Log.e(TAG, "Failed to download user avatar: " + avatarUrl);
         }
         return null;
-    }
+    }*/
 }
