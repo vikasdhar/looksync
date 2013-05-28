@@ -14,7 +14,7 @@ import android.accounts.NetworkErrorException; //
 import android.text.TextUtils; //
 import android.util.Log; //
 
-import com.example.android.common.R;
+import com.looksync.android.R;
 import com.looksync.android.common.Constants;
 import com.looksync.android.common.NetworkUtilities;
 

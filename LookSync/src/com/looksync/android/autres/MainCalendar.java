@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.example.android.common.R;
+import com.looksync.android.R;
 
 //import roman10.tutorial.calendarops.R;
 //import roman10.tutorial.calendarops.R.id;

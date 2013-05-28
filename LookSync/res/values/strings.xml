@@ -12,11 +12,11 @@
 
     <!-- Permission label -->
     <string
-        name="permlab_samplesyncadapterAuthPassword">access to passwords for Sample SyncAdapter accounts</string>
+        name="permlab_samplesyncadapterAuthPassword">access to passwords for LookSync accounts</string>
     <!-- Permission description -->
     <string
         name="permdesc_samplesyncadapterAuthPassword">Allows applications direct access to the passwords for the
-        Sample SyncAdapter account(s) you have configured.</string>
+        LookSync account(s) you have configured.</string>
 
     <!-- Permission label -->
     <string
@@ -24,9 +24,9 @@
     <!-- Permission description -->
     <string
         name="permdesc_samplesyncadapterAuth">Allows applications to see the usernames (email addresses) of
-        the Sample SyncAdapter account(s) you have configured.</string>
+        the LookSync account(s) you have configured.</string>
     <string
-        name="notification_login_error">Touch to sign into your Sample SyncAdapter account.</string>
+        name="notification_login_error">Touch to sign into your LookSync account.</string>
 
     <!-- Title string for Login activity-->
     <string
@@ -49,7 +49,7 @@
 
     <!-- Message shown in dialog if the username or password is invalid. -->
     <string
-        name="login_activity_loginfail_text_both">The username or password isn\'t valid. A Sample SyncAdapter account is
+        name="login_activity_loginfail_text_both">The username or password isn\'t valid. A LookSync account is
         required. Please try again. </string>
     <!-- Message shown in dialog if the password is invalid -->
     <string
@@ -63,7 +63,7 @@
         activity.
     -->
     <string
-        name="login_activity_newaccount_text">Sign in to your Sample SyncAdapter account. </string>
+        name="login_activity_newaccount_text">Sign in to your LookSync account. </string>
 
     <!-- Button that takes the user to the "sign in" screen -->
     <string

@@ -19,15 +19,25 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.android.common.R;
+import com.looksync.android.R;
 import com.looksync.android.common.Constants;
 import com.looksync.android.common.NetworkUtilities;
 
 
 
+
+
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.independentsoft.exchange.Appointment;
+import com.independentsoft.exchange.Body;
+import com.independentsoft.exchange.ItemId;
 import com.independentsoft.exchange.Service;
-
-
+import com.independentsoft.exchange.ServiceException;
 
 //voir exemple: SampleSyncAdapter
 //activité demandant les identifiants à l'utilisateur
@@ -47,7 +57,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 	
 	public static final String PARAM_CONFIRMCREDENTIALS = "confirmCredentials";
     public static final String PARAM_PASSWORD = "Utilisatéur428"; //"password";
-    public static final String PARAM_USERNAME = "LOOKSYNC\\Administrateur"; //"username";
+    public static final String PARAM_USERNAME = "Administrateur"; //"username";
     public static final String PARAM_AUTHTOKEN_TYPE = "authtokenType";
 
     private static final String TAG = "AuthenticatorActivity";
@@ -82,14 +92,14 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     public void onCreate(Bundle icicle) {
         Log.i(TAG, "onCreate(" + icicle + ")");
         super.onCreate(icicle);
-        mAccountManager = AccountManager.get(this);
+        //mAccountManager = AccountManager.get(this);
         Log.i(TAG, "loading data from Intent");
         final Intent intent = getIntent();
-        mUsername = intent.getStringExtra(PARAM_USERNAME);
-        mAuthtokenType = intent.getStringExtra(PARAM_AUTHTOKEN_TYPE);
+        //mUsername = intent.getStringExtra(PARAM_USERNAME);
+        //mAuthtokenType = intent.getStringExtra(PARAM_AUTHTOKEN_TYPE);
         mRequestNewAccount = mUsername == null;
-        mConfirmCredentials =
-            intent.getBooleanExtra(PARAM_CONFIRMCREDENTIALS, false);
+        /*mConfirmCredentials =
+            intent.getBooleanExtra(PARAM_CONFIRMCREDENTIALS, false);*/
 
         Log.i(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
@@ -142,13 +152,30 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         } else {
             showProgress();
             // Start authenticating...
-Service service = new Service("https://myserver/ews/Exchange.asmx", "username", "password");
-Log.v(TAG, "Successful authentication");
-
-//            mAuthThread =
-//        		NetworkUtilities.attemptAuth(mUsername, mPassword);
+            /*mAuthThread =
+        		NetworkUtilities.attemptAuth(mUsername, mPassword);
                 //NetworkUtilities.attemptAuth(mUsername, mPassword, mHandler,
-                    //AuthenticatorActivity.this);
+                    //AuthenticatorActivity.this);*/
+            
+            
+            
+            //Service service = new Service("https://myserver/ews/Exchange.asmx", "username", "password");
+	    	//Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "LOOKSYNC\\Administrateur", "Utilisatéur428"); => faux
+            //Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428");
+            //ou : Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428", "LOOKSYNC");
+            try
+            {
+	            Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", mUsername, mPassword); //TODO actuellement ne va pas dans le catch si mauvais user/pwd
+	            if (Log.isLoggable(TAG, Log.VERBOSE)) {
+                    Log.v(TAG, "Successful authentication");
+                }
+	            onAuthenticationResult(true);
+            }
+            catch (Exception e)
+            {
+                Log.e(TAG, "Error authenticating");
+                onAuthenticationResult(false);
+            }
         }
     }
 
@@ -159,7 +186,7 @@ Log.v(TAG, "Successful authentication");
      * 
      * @param the confirmCredentials result.
      */
-    protected void finishConfirmCredentials(boolean result) {
+    /*protected void finishConfirmCredentials(boolean result) {
         Log.i(TAG, "finishConfirmCredentials()");
         final Account account = new Account(mUsername, Constants.ACCOUNT_TYPE);
         mAccountManager.setPassword(account, mPassword);
@@ -168,7 +195,7 @@ Log.v(TAG, "Successful authentication");
         setAccountAuthenticatorResult(intent.getExtras());
         setResult(RESULT_OK, intent);
         finish();
-    }
+    }*/
 
     /**
      * 
@@ -180,7 +207,7 @@ Log.v(TAG, "Successful authentication");
      * @param the confirmCredentials result.
      */
 
-    protected void finishLogin() {
+     /*protected void finishLogin() {
         Log.i(TAG, "finishLogin()");
         final Account account = new Account(mUsername, Constants.ACCOUNT_TYPE);
 
@@ -204,7 +231,7 @@ Log.v(TAG, "Successful authentication");
         setAccountAuthenticatorResult(intent.getExtras());
         setResult(RESULT_OK, intent);
         finish();
-    }
+    //}*/
 
     /**
      * Hides the progress UI for a lengthy operation.
@@ -220,13 +247,14 @@ Log.v(TAG, "Successful authentication");
         Log.i(TAG, "onAuthenticationResult(" + result + ")");
         // Hide the progress dialog
         hideProgress();
-        if (result) {
+        /*if (result) {
             if (!mConfirmCredentials) {
                 finishLogin();
             } else {
                 finishConfirmCredentials(true);
             }
-        } else {
+        } else {*/
+        if(!result) {
             Log.e(TAG, "onAuthenticationResult: failed to authenticate");
             if (mRequestNewAccount) {
                 // "Please enter a valid username/password.
