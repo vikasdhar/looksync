@@ -53,7 +53,7 @@ public class SettingsTab extends Activity {
     public static final String PARAM_USERNAME = "Administrateur"; //"username";
     public static final String PARAM_AUTHTOKEN_TYPE = "authtokenType";
 
-    private static final String TAG = "AuthenticatorActivity";
+    private static final String TAG = "SettingsTab"; //"AuthenticatorActivity";
 
     private AccountManager mAccountManager;
     private Thread mAuthThread;
