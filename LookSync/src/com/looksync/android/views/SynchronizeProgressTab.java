@@ -21,7 +21,7 @@ public class SynchronizeProgressTab extends Activity {
     		//@Override
     		public void onClick(View v) {
                 Intent myIntent = new Intent(SynchronizeProgressTab.this, TabAndroidActivity.class);
-                myIntent.putExtra("indiceTabCourant", "1"); //Optional parameters //TODO constante
+                myIntent.putExtra("indiceTabCourant", "1"); //TODO constante
                 startActivity(myIntent);
             }
         });

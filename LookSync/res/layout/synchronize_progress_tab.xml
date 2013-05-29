@@ -16,22 +16,25 @@
         android:src="@drawable/logo" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black" >
-
-        <TextView
-            android:id="@+id/synchronisation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Synchronisation"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="@color/white"/>
-
-    </RelativeLayout>
-
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:background="@color/Black"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    
+	    <TextView android:textColor="@color/white"
+	        android:layout_width="wrap_content"
+	        android:text="Synchronisation"
+	        android:layout_height="wrap_content"
+	        android:padding="2dp"
+	        android:shadowColor="@color/White"
+	        android:shadowDx="0"
+	        android:shadowDy="0"
+	        android:shadowRadius="2" 
+	        android:layout_centerHorizontal="true"
+	        android:textSize="20dp"/>
+	    
+	</RelativeLayout>
     <ProgressBar
         android:id="@+id/barre_progression"
         style="?android:attr/progressBarStyleHorizontal"

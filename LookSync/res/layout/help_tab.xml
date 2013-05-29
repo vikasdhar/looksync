@@ -33,24 +33,26 @@
 
     </RelativeLayout>-->
         
-        <RelativeLayout
-		    xmlns:android="http://schemas.android.com/apk/res/android"
-		    android:orientation="vertical"
-		    android:background="@color/Black"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent">
-		    <TextView android:textColor="@color/white"
-		        android:layout_width="wrap_content"
-		        android:text="Aide"
-		        android:layout_height="wrap_content"
-		        android:padding="2dp"
-		        android:shadowColor="@color/White"
-		        android:shadowDx="0"
-		        android:shadowDy="0"
-		        android:shadowRadius="2" 
-		        android:layout_centerHorizontal="true"
-		        android:textSize="20dp"/>
-		</RelativeLayout>
+    <RelativeLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:background="@color/Black"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    
+	    <TextView android:textColor="@color/white"
+	        android:layout_width="wrap_content"
+	        android:text="Aide"
+	        android:layout_height="wrap_content"
+	        android:padding="2dp"
+	        android:shadowColor="@color/White"
+	        android:shadowDx="0"
+	        android:shadowDy="0"
+	        android:shadowRadius="2" 
+	        android:layout_centerHorizontal="true"
+	        android:textSize="20dp"/>
+	    
+	</RelativeLayout>
 
     <TextView
         android:id="@+id/but"
@@ -136,7 +138,7 @@
         android:id="@+id/politique_descr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cette application ne collecte ou n'envoie pas de données à des appareils étranger. Les données sont uniquement échangés entre votre téléphone portable and votre webmail Outlook."/>
+        android:text="Cette application ne collecte ou n'envoie pas de données à des appareils étranger. Les données sont uniquement échangés entre votre téléphone portable et votre webmail Outlook."/>
 
 </LinearLayout>
 
