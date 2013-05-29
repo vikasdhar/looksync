@@ -8,19 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
  
-public class SynchronizeTab extends Activity {
+public class SettingsTab extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.synchronize_tab);
+        setContentView(R.layout.settings_tab);
         
         
-        //listener du bouton Synchroniser
-        Button btnSynchroniser = (Button) findViewById(R.id.btn_synchroniser_maintenant);
-        btnSynchroniser.setOnClickListener(new View.OnClickListener() {
+        //listener du bouton A propos de LookSync
+        Button btnAPropos = (Button) findViewById(R.id.btn_a_propos);
+        btnAPropos.setOnClickListener(new View.OnClickListener() {
     		//@Override
     		public void onClick(View v) {
-                Intent myIntent = new Intent(SynchronizeTab.this, SynchronizeProgressTab.class);
+                Intent myIntent = new Intent(SettingsTab.this, AboutTab.class);
                 startActivity(myIntent);
             }
         });

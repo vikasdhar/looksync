@@ -91,13 +91,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>  
         </activity>
-        <activity android:name="com.looksync.android.views.HomeTab"></activity>
-        <activity android:name="com.looksync.android.views.SynchronizeTab"></activity>
-        <activity android:name="com.looksync.android.views.SynchronizeProgressTab"></activity>
-        <activity android:name="com.looksync.android.views.SynchronizeRecapTab"></activity>
-        <activity android:name="com.looksync.android.views.HelpTab"></activity>
-        <activity android:name="com.looksync.android.views.ConfigurationTab"></activity>
-        <activity android:name="com.looksync.android.views.AboutTab"></activity>
+        <activity android:name=".views.HomeTab"></activity>
+        <activity android:name=".views.SynchronizeTab"></activity>
+        <activity android:name=".views.SynchronizeProgressTab"></activity>
+        <activity android:name=".views.SynchronizeRecapTab"></activity>
+        <activity android:name=".views.HelpTab"></activity>
+        <activity android:name=".views.SettingsTab"></activity>
+        <activity android:name=".views.AboutTab"></activity>
         
         
         <receiver android:name="com.looksync.android.autres.DetectUSB">

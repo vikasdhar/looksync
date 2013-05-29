@@ -6,6 +6,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TabHost;
  
 public class TabAndroidActivity extends TabActivity {
@@ -15,11 +16,11 @@ public class TabAndroidActivity extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
  
-        Resources res = getResources(); 
+        Resources res = getResources();
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec; 
         Intent intent; 
- 
+        
         intent = new Intent().setClass(this, HomeTab.class);
  
         intent = new Intent().setClass(this, HomeTab.class);
@@ -45,7 +46,7 @@ public class TabAndroidActivity extends TabActivity {
                 .setContent(intent);
         tabHost.addTab(spec);
         
-        intent = new Intent().setClass(this, ConfigurationTab.class);
+        intent = new Intent().setClass(this, SettingsTab.class);
         spec = tabHost
                 .newTabSpec("Configuration")
                 .setIndicator("Réglages", res.getDrawable(android.R.drawable.ic_menu_manage))
@@ -53,7 +54,16 @@ public class TabAndroidActivity extends TabActivity {
         tabHost.addTab(spec);
         
         //TODO Quitter ic_menu_close_clear_cancel
- 
-        tabHost.setCurrentTab(0); 
+        
+        
+        String value = getIntent().getStringExtra("indiceTabCourant"); //        
+        if(value != null && value != ""){
+        	tabHost.setCurrentTab(Integer.parseInt(value));
+        	Log.i("TAG", "Paramètre indice tab courant : " + value);
+        }
+        else {
+        	tabHost.setCurrentTab(0);
+        	Log.i("TAG", "Aucun indice tab courant passé en paramètre");
+        }
     }
 }
