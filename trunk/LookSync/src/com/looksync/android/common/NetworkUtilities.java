@@ -26,7 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import com.looksync.android.common.NetworkUtilities;
-import com.looksync.android.authenticator.AuthenticatorActivity;
+import com.looksync.android.authenticator.AuthenticatorActivity_test;
 //import org.json.JSONObject;
 
 import java.io.IOException;

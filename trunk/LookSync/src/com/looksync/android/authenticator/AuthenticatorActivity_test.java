@@ -1,11 +1,8 @@
-package com.looksync.android.views;
-
-import com.looksync.android.R;
+package com.looksync.android.authenticator;
 
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -19,7 +16,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -43,10 +39,21 @@ import com.independentsoft.exchange.ItemId;
 import com.independentsoft.exchange.Service;
 import com.independentsoft.exchange.ServiceException;
 
+//voir exemple: SampleSyncAdapter
+//activité demandant les identifiants à l'utilisateur
 /**
- * Activity which displays settings screen to the user.
+ * Activity which displays login screen to the user.
  */
-public class SettingsTab extends Activity {
+public class AuthenticatorActivity_test extends AccountAuthenticatorActivity {
+
+	//public static final String PARAM_USERNAME = null;
+	
+	//public static final String PARAM_AUTHTOKEN_TYPE = null;
+	
+	//Méthodes d'interface graphique...
+	
+	
+	
 	
 	public static final String PARAM_CONFIRMCREDENTIALS = "confirmCredentials";
     public static final String PARAM_PASSWORD = "Utilisatéur428"; //"password";
@@ -69,8 +76,6 @@ public class SettingsTab extends Activity {
     /** for posting authentication attempts back to UI thread */
     private final Handler mHandler = new Handler();
     private TextView mMessage;
-    private String mServer; //
-    private EditText mServerEdit;
     private String mPassword;
     private EditText mPasswordEdit;
 
@@ -79,17 +84,17 @@ public class SettingsTab extends Activity {
 
     private String mUsername;
     private EditText mUsernameEdit;
-    
+
     /**
      * {@inheritDoc}
      */
     @Override
-    public void onCreate(Bundle icicle) { //Bundle savedInstanceState
+    public void onCreate(Bundle icicle) {
         Log.i(TAG, "onCreate(" + icicle + ")");
         super.onCreate(icicle);
         //mAccountManager = AccountManager.get(this);
         Log.i(TAG, "loading data from Intent");
-        //final Intent intent = getIntent();
+        final Intent intent = getIntent();
         //mUsername = intent.getStringExtra(PARAM_USERNAME);
         //mAuthtokenType = intent.getStringExtra(PARAM_AUTHTOKEN_TYPE);
         mRequestNewAccount = mUsername == null;
@@ -98,30 +103,16 @@ public class SettingsTab extends Activity {
 
         Log.i(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
-        setContentView(R.layout.settings_tab); //setContentView(R.layout.login_activity_test);
+        setContentView(R.layout.login_activity_test);
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
             android.R.drawable.ic_dialog_alert);
 
         mMessage = (TextView) findViewById(R.id.message);
-        mServerEdit = (EditText) findViewById(R.id.server_edit);
         mUsernameEdit = (EditText) findViewById(R.id.username_edit);
         mPasswordEdit = (EditText) findViewById(R.id.password_edit);
 
         mUsernameEdit.setText(mUsername);
         mMessage.setText(getMessage());
-        
-        
-        
-        
-        //listener du bouton A propos de LookSync
-        Button btnAPropos = (Button) findViewById(R.id.btn_a_propos);
-        btnAPropos.setOnClickListener(new View.OnClickListener() {
-    		//@Override
-    		public void onClick(View v) {
-                Intent myIntent = new Intent(SettingsTab.this, AboutTab.class);
-                startActivity(myIntent);
-            }
-        });
     }
 
     /*
@@ -155,9 +146,8 @@ public class SettingsTab extends Activity {
         if (mRequestNewAccount) {
             mUsername = mUsernameEdit.getText().toString();
         }
-        mServer = mServerEdit.getText().toString();
         mPassword = mPasswordEdit.getText().toString();
-        if (TextUtils.isEmpty(mServer) || TextUtils.isEmpty(mUsername) || TextUtils.isEmpty(mPassword)) {
+        if (TextUtils.isEmpty(mUsername) || TextUtils.isEmpty(mPassword)) {
             mMessage.setText(getMessage());
         } else {
             showProgress();
@@ -175,7 +165,7 @@ public class SettingsTab extends Activity {
             //ou : Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428", "LOOKSYNC");
             try
             {
-	            Service service = new Service("https://" + mServer + "/ews/Exchange.asmx", mUsername, mPassword); //TODO actuellement ne va pas dans le catch si mauvais user/pwd
+	            Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", mUsername, mPassword); //TODO actuellement ne va pas dans le catch si mauvais user/pwd
 	            if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Successful authentication");
                 }
@@ -291,13 +281,7 @@ public class SettingsTab extends Activity {
             final CharSequence msg =
                 getText(R.string.login_activity_newaccount_text);
             return msg;
-        }        
-
-        if (TextUtils.isEmpty(mServer)) { //
-            // We have an account but no server
-            return "Server missing";
         }
-        
         if (TextUtils.isEmpty(mPassword)) {
             // We have an account but no password
             return getText(R.string.login_activity_loginfail_text_pwmissing);

@@ -45,7 +45,7 @@ public class Authenticator extends AbstractAccountAuthenticator{
 			Bundle options)
 			throws NetworkErrorException { // 
 		Log.v("Authenticator LOOKSYNC", "addAccount()");
-        final Intent intent = new Intent(mContext, AuthenticatorActivity.class);
+        final Intent intent = new Intent(mContext, AuthenticatorActivity_test.class);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
         final Bundle bundle = new Bundle();
         bundle.putParcelable(AccountManager.KEY_INTENT, intent);
@@ -130,9 +130,9 @@ public class Authenticator extends AbstractAccountAuthenticator{
         // an intent to display our AuthenticatorActivity panel.
         // the password was missing or incorrect, return an Intent to an
         // Activity that will prompt the user for the password.
-        final Intent intent = new Intent(mContext, AuthenticatorActivity.class);
-        intent.putExtra(AuthenticatorActivity.PARAM_USERNAME, account.name);
-        intent.putExtra(AuthenticatorActivity.PARAM_AUTHTOKEN_TYPE, authTokenType);
+        final Intent intent = new Intent(mContext, AuthenticatorActivity_test.class);
+        intent.putExtra(AuthenticatorActivity_test.PARAM_USERNAME, account.name);
+        intent.putExtra(AuthenticatorActivity_test.PARAM_AUTHTOKEN_TYPE, authTokenType);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
         final Bundle bundle = new Bundle();
         bundle.putParcelable(AccountManager.KEY_INTENT, intent);
