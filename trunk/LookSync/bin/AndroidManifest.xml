@@ -76,12 +76,28 @@
             -->
             
             
-             <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter><!---->
+            </intent-filter>--><!---->
         </activity>
+        
+        
+        <activity android:name="com.looksync.android.views.TabAndroidActivity">            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>  
+        </activity>
+        <activity android:name="com.looksync.android.views.HomeTab"></activity>
+        <activity android:name="com.looksync.android.views.SynchronizeTab"></activity>
+        <activity android:name="com.looksync.android.views.SynchronizeProgressTab"></activity>
+        <activity android:name="com.looksync.android.views.SynchronizeRecapTab"></activity>
+        <activity android:name="com.looksync.android.views.HelpTab"></activity>
+        <activity android:name="com.looksync.android.views.ConfigurationTab"></activity>
+        <activity android:name="com.looksync.android.views.AboutTab"></activity>
         
         
         <receiver android:name="com.looksync.android.autres.DetectUSB">

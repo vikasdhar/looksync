@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+        
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutOnglet1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
+
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black" >
+
+        <TextView
+            android:id="@+id/aide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Aide"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>-->
+        
+        <RelativeLayout
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="vertical"
+		    android:background="@color/Black"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent">
+		    <TextView android:textColor="@color/white"
+		        android:layout_width="wrap_content"
+		        android:text="Aide"
+		        android:layout_height="wrap_content"
+		        android:padding="2dp"
+		        android:shadowColor="@color/White"
+		        android:shadowDx="0"
+		        android:shadowDy="0"
+		        android:shadowRadius="2" 
+		        android:layout_centerHorizontal="true"
+		        android:textSize="20dp"/>
+		</RelativeLayout>
+
+    <TextView
+        android:id="@+id/but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cette application synchronise les calendriers entre Android et webmail Outlook."/>
+
+    <TextView
+        android:id="@+id/configurer_application"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configurer l'application (page &quot;Réglages&quot;)" 
+        android:layout_marginTop="20dip"/>
+
+    <TextView
+        android:id="@+id/etape_1_adr_mdp_outlook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Adresse email et mot de passe de votre webmail Outlook"/>
+    
+    <TextView
+        android:id="@+id/etape_2_mode_synchronisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Mode de synchronisation - selon vos besoins"/>
+
+	<TextView
+	    android:id="@+id/modes_synchronisation"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Modes de synchronisation"
+	    android:textAppearance="?android:attr/textAppearanceMedium" 
+	    android:layout_marginTop="20dip"/> 
+
+	<TextView
+        android:id="@+id/deux_sens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deux sens"
+        android:textStyle="bold"/>
+	
+	<TextView
+        android:id="@+id/deux_sens_descr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Les évènements des calendriers stockés sur votre Android vont être fusionnés avec votre webmail Outlook "/>
+	
+	<TextView
+        android:id="@+id/un_sens_android_outlook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Un sens : calendrier Android à calendrier Outlook"
+		android:textStyle="bold"/>
+	
+	<TextView
+        android:id="@+id/un_sens_android_outlook_desr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Les évènements des calendriers de votre Android vont remplacés les évènements des calendriers de votre webmail Outlook."/>
+	
+	<TextView
+        android:id="@+id/un_sens_outlook_android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Un sens : calendrier Outlook à calendrier Android"
+        android:textStyle="bold"/>
+	
+	<TextView
+        android:id="@+id/un_sens_outlook_android_descr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Les évènements des calendriers stockés de votre Android vont remplacés les évènements des calendriers stockés sur votre webmail Outlook"/>
+
+	<TextView
+	    android:id="@+id/politique"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Politique"
+	    android:textAppearance="?android:attr/textAppearanceMedium" 
+	    android:layout_marginTop="20dip"/> 
+	
+	<TextView
+        android:id="@+id/politique_descr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cette application ne collecte ou n'envoie pas de données à des appareils étranger. Les données sont uniquement échangés entre votre téléphone portable and votre webmail Outlook."/>
+
+</LinearLayout>
+
+</ScrollView>

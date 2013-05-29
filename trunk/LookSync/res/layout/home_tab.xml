@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutOnglet1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LookSync permet de synchroniser le calendrier Android avec un webmail Outlook."/>
+
+    <TextView
+        android:id="@+id/derniere_synchronisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dernière synchronisation : 24.04.2013 18:56" 
+        android:layout_marginTop="30dip"/>
+ 
+</LinearLayout>
