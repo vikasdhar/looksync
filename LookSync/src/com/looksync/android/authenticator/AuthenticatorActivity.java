@@ -103,7 +103,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
         Log.i(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.login_activity_test);
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
             android.R.drawable.ic_dialog_alert);
 

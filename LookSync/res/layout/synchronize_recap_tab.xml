@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutOnglet1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black" >
+
+        <TextView
+            android:id="@+id/synchronisation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Synchronisation"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/synchronise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Synchronisé !"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:layout_gravity="center"
+        android:textColor="@color/green"/>
+
+    <TextView
+        android:id="@+id/fin_synchronisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le calendrier a été synchronisé entre Android et Outlook." 
+        android:layout_gravity="center"
+        android:layout_marginTop="20dip"
+        android:textColor="@color/green"/>
+
+    
+    
+
+    <!--<TableRow android:id="@+id/tabla_cabecera" android:layout_width="match_parent" android:layout_height="match_parent"></TableRow>-->
+	<!--<TableLayout
+        android:id="@+id/table_recap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip">-->
+    <TableLayout
+        android:id="@+id/table_recap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow 
+            android:id="@+id/table_row1" 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content">
+
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/vide" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="">                
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/ajoute" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="Ajouté">
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/mis_a_jour" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="Mis à jour">
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/textView1" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="Supprimé">
+            </TextView>
+            
+        </TableRow>
+        <TableRow 
+            android:id="@+id/table_row2" 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content">                    
+                
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/recu" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="Reçu"> 
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/nb_recu_ajoute" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="0">                
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/nb_recu_mis_a_jour" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="0">
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/nb_recu_supprime" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="0">
+            </TextView>
+       	</TableRow>
+       	<TableRow 
+            android:id="@+id/table_row3" 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content">                    
+                
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/envoye" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="Envoyé"> 
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/nb_envoye_ajoute" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="0">                
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/nb_envoye_mis_a_jour" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="0">
+            </TextView>
+            <TextView 
+                android:background="@drawable/cell_shape" 
+                android:padding="5dp" 
+                android:id="@+id/nb_envoye_supprime" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:text="0">
+            </TextView>
+       	</TableRow>
+    </TableLayout>
+
+
+    <TextView
+        android:id="@+id/temps_synchronisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temps de synchronisation : 30 secondes" 
+        android:layout_marginTop="20dip"/>
+
+    <TextView
+        android:id="@+id/etat_synchronisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Etat de la synchronisation : échec/réussite/échec partiel/réussite partielle" />
+ 
+</LinearLayout>
+</ScrollView>
