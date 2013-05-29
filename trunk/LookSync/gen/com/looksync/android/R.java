@@ -192,7 +192,7 @@ public final class R {
         public static final int btn_annuler=0x7f090041;
         public static final int btn_enregistrer=0x7f090040;
         public static final int btn_logs=0x7f09003f;
-        public static final int btn_synchroniser_maintenant=0x7f09005a;
+        public static final int btn_synchroniser_maintenant=0x7f090059;
         public static final int but=0x7f090006;
         public static final int button_add=0x7f09002c;
         public static final int button_add2=0x7f09002d;
@@ -213,7 +213,7 @@ public final class R {
         public static final int intervalle_edit=0x7f090038;
         public static final int linearLayoutOnglet1=0x7f090001;
         public static final int logo=0x7f090002;
-        public static final int menu_settings=0x7f09005b;
+        public static final int menu_settings=0x7f09005a;
         public static final int message=0x7f090014;
         public static final int message_bottom=0x7f090018;
         public static final int minutes=0x7f090039;
@@ -234,8 +234,7 @@ public final class R {
         public static final int politique=0x7f090011;
         public static final int politique_descr=0x7f090012;
         public static final int progressBarSynchronisation=0x7f090028;
-        public static final int radio0=0x7f090058;
-        public static final int radio1=0x7f090059;
+        public static final int radio_calendrier_defaut=0x7f090058;
         public static final int radio_deux_sens=0x7f090034;
         public static final int radio_group_calendriers=0x7f090057;
         public static final int radio_group_sens=0x7f090033;
