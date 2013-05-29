@@ -25,22 +25,43 @@ android:layout_height="match_parent" >
             android:layout_height="wrap_content"
             android:src="@drawable/logo" />
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black" >
 
         <TextView
-            android:id="@+id/synchronisation"
+            android:id="@+id/aide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Configuration"
+            android:text="Aide"
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="@color/white"/>
 
-    </RelativeLayout>
+    </RelativeLayout>-->
+        
+    <RelativeLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:background="@color/Black"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    
+	    <TextView android:textColor="@color/white"
+	        android:layout_width="wrap_content"
+	        android:text="Configuration"
+	        android:layout_height="wrap_content"
+	        android:padding="2dp"
+	        android:shadowColor="@color/White"
+	        android:shadowDx="0"
+	        android:shadowDy="0"
+	        android:shadowRadius="2" 
+	        android:layout_centerHorizontal="true"
+	        android:textSize="20dp"/>
+	    
+	</RelativeLayout>
 
 	 <TextView
 	     android:id="@+id/textView1"
