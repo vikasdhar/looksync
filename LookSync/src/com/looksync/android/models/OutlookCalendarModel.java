@@ -1,9 +1,9 @@
-package com.looksync.android.calendarModel;
+package com.looksync.android.models;
 
 //Modele pour le calendrier
 //Inspire de la structure de calendrier Outlook, donc devrait fonctionner pour une synchronisation Outlook...
 
-public class CalendrierOutlookModel {
+public class OutlookCalendarModel {
 	@Override
 	public String toString() {
 		return "CalendrierOutlookModel [sujet=" + sujet + ", message="
