@@ -53,7 +53,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/synchroniser_maintenant"
+        android:id="@+id/btn_synchroniser_maintenant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Synchroniser maintenant" 
