@@ -1,7 +1,7 @@
-package com.looksync.android.calendarModel;
+package com.looksync.android.models;
 
-public class CalendrierAndroidModel {
-	public CalendrierAndroidModel() {
+public class AndroidCalendarModel {
+	public AndroidCalendarModel() {
 		super();
 	}
 
@@ -17,7 +17,7 @@ public class CalendrierAndroidModel {
     		"has alarm: yes\n";
 	 */
 	
-	public CalendrierAndroidModel(String description, String titre,
+	public AndroidCalendarModel(String description, String titre,
 			String debut, String fin, String statut, String allDay,
 			Boolean son, String alarm, String calendarId, String visibility,
 			String hasAlarm) {

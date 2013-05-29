@@ -1,6 +1,6 @@
 package com.looksync.android.syncadapter;
 
-import android.accounts.Account;
+/*import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
@@ -24,13 +24,13 @@ import com.looksync.android.common.NetworkUtilities;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
+import java.util.List;*/
 
 /**
  * SyncAdapter implementation for syncing sample SyncAdapter contacts to the
  * platform ContactOperations provider.
  */
-public class SyncAdapter extends AbstractThreadedSyncAdapter {
+/*public class SyncAdapter extends AbstractThreadedSyncAdapter {
     private static final String TAG = "SyncAdapter";
 
     private final AccountManager mAccountManager;
@@ -47,7 +47,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
         ContentProviderClient provider, SyncResult syncResult) {
-    	/*List<User> users;
+    	List<User> users;
         List<Status> statuses;
         String authtoken = null;
          try {
@@ -86,6 +86,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         } catch (final JSONException e) {
             syncResult.stats.numParseExceptions++;
             Log.e(TAG, "JSONException", e);
-        }*/
+        }
     }
-}
+}*/
