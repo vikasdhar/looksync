@@ -1,6 +1,6 @@
 package com.looksync.android.syncadapter;
 
-/*import android.accounts.Account;
+import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
@@ -19,18 +19,20 @@ import org.apache.http.ParseException;
 import org.apache.http.auth.AuthenticationException;
 import org.json.JSONException;
 
+import com.independentsoft.exchange.Appointment;
 import com.looksync.android.common.Constants;
 import com.looksync.android.common.NetworkUtilities;
+import com.looksync.android.models.OutlookAppointmentModel;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;*/
+import java.util.List;
 
 /**
  * SyncAdapter implementation for syncing sample SyncAdapter contacts to the
  * platform ContactOperations provider.
  */
-/*public class SyncAdapter extends AbstractThreadedSyncAdapter {
+public class SyncAdapter extends AbstractThreadedSyncAdapter {
     private static final String TAG = "SyncAdapter";
 
     private final AccountManager mAccountManager;
@@ -47,19 +49,27 @@ import java.util.List;*/
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority,
         ContentProviderClient provider, SyncResult syncResult) {
-    	List<User> users;
-        List<Status> statuses;
-        String authtoken = null;
-         try {
+    	//List<User> users;
+        //List<Status> statuses;
+    	List<Appointment> events;
+        //String authtoken = null;
+//         try {
         	 // use the account manager to request the credentials
-             authtoken =
+             /*authtoken =
                 mAccountManager.blockingGetAuthToken(account,
-                    Constants.AUTHTOKEN_TYPE, true *//* notifyAuthFailure *//*);
+                    Constants.AUTHTOKEN_TYPE, true *//* notifyAuthFailure *//*);*/
              // fetch updates from the sample service over the cloud
-             users =
+             /*users =
                 NetworkUtilities.fetchFriendUpdates(account, authtoken,
-                    mLastUpdated);
-            // update the last synced date.
+                    mLastUpdated);*/
+//        	 try { //TODO
+//				events =
+//			         NetworkUtilities.fetchAppointment(/*account, authtoken,
+//			             mLastUpdated*/);
+//			} catch (java.text.ParseException e) {
+//				e.printStackTrace();
+//			}
+/*            // update the last synced date.
             mLastUpdated = new Date();
             // update platform contacts.
             Log.d(TAG, "Calling contactManager's sync contacts");
@@ -86,6 +96,6 @@ import java.util.List;*/
         } catch (final JSONException e) {
             syncResult.stats.numParseExceptions++;
             Log.e(TAG, "JSONException", e);
-        }
+        }*/
     }
-}*/
+}

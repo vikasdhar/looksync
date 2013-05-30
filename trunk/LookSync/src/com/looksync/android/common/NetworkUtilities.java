@@ -2,6 +2,7 @@ package com.looksync.android.common;
 
 import android.accounts.Account;
 import android.content.Context;
+import android.content.SharedPreferences;
 /*import android.content.Context;
 import android.os.Handler;*/
 import android.util.Log;
@@ -11,7 +12,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
+//import org.apache.http.ParseException;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -25,14 +26,11 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import com.looksync.android.common.NetworkUtilities;
-import com.looksync.android.authenticator.AuthenticatorActivity_test;
-//import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -40,6 +38,7 @@ import java.util.TimeZone;
 import android.graphics.Bitmap; //
 import android.graphics.BitmapFactory; //
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.text.TextUtils; //
 
 import java.io.BufferedReader; //
@@ -52,8 +51,31 @@ import java.net.MalformedURLException; //
 import java.net.URL; //
 import java.util.ArrayList; //
 
+import com.looksync.android.authenticator.ServiceExchange;
+import com.looksync.android.models.OutlookAppointmentModel;
+import com.looksync.android.preferences.Preferences;
+import com.looksync.android.views.SynchronizeProgressTab;
+import com.looksync.android.views.SynchronizeTab;
 
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.independentsoft.exchange.And;
+import com.independentsoft.exchange.Appointment;
+import com.independentsoft.exchange.AppointmentPropertyPath;
+import com.independentsoft.exchange.FindFolderResponse;
+import com.independentsoft.exchange.FindItemResponse;
+import com.independentsoft.exchange.Folder;
+import com.independentsoft.exchange.FolderId;
+import com.independentsoft.exchange.IsGreaterThanOrEqualTo;
+import com.independentsoft.exchange.IsLessThanOrEqualTo;
+import com.independentsoft.exchange.Restriction;
+import com.independentsoft.exchange.Service;
+import com.independentsoft.exchange.ServiceException;
+import com.independentsoft.exchange.StandardFolder;
 
 
 //voir exemple: SampleSyncAdapter
@@ -94,7 +116,8 @@ public class NetworkUtilities {
     
     /*private NetworkUtilities() {
     } //*/
-
+    
+    
     /**
      * Configures the httpClient to connect to the URL provided.
      */
@@ -257,6 +280,101 @@ public class NetworkUtilities {
         return NetworkUtilities.performOnBackgroundThread(runnable);
     } //*/
 
+    /**
+     * Fetches the list of friend data updates from the server
+     * 
+     * @param account The account being synced.
+     * @param authtoken The authtoken stored in AccountManager for this account
+     * @param lastUpdated The last time that sync was performed
+     * @return list The list of updates received from the server.
+     * @throws java.text.ParseException 
+     */
+    public static List<Appointment> fetchAppointment(Context context, String calendrierASynchroniser) 
+    	throws ParseException {
+    	
+        try
+        {
+        	Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428"); //TODO utiliser classe ServiceExchange
+        	
+            //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        	Preferences prefs = new Preferences(context);
+        	String mPeriode = prefs.getPeriodeASynchroniser();
+        	Log.d(TAG, "Préférence période : " + mPeriode);
+        	
+            //Date endTime = dateFormat.parse("2011-04-16 00:00:00");
+
+        	FindItemResponse response;
+        	Restriction restrict = null;
+        	if(mPeriode != "tout") {
+            	Calendar now = Calendar.getInstance();
+	            now.add(Calendar.MONTH, -6); //TODO remettre Integer.parseInt(mPeriode)
+	        	//Date startTime = dateFormat.parse("2011-04-15 00:00:00");
+	            Date startTime = now.getTime();
+	            Log.d(TAG, "Date de début période : " + startTime);
+        	
+	            IsGreaterThanOrEqualTo restriction1 = new IsGreaterThanOrEqualTo(AppointmentPropertyPath.START_TIME, startTime);
+
+	        	//IsLessThanOrEqualTo restriction2 = new IsLessThanOrEqualTo(AppointmentPropertyPath.END_TIME, endTime);
+	            //And restriction3 = new And(restriction1, restriction2);
+
+	            restrict = restriction1;
+    		}
+        	
+            FindFolderResponse findFolderResponse = service.findFolder(StandardFolder.CALENDAR);
+            if(!calendrierASynchroniser.equals(calendrierASynchroniser))
+            {
+	            FolderId specifiedFolder = null;
+	            for (int i = 0; i < findFolderResponse.getFolders().size(); i++) {
+	            	if(findFolderResponse.getFolders().get(i).getDisplayName().equals(calendrierASynchroniser)) {
+	            		specifiedFolder = findFolderResponse.getFolders().get(i).getFolderId();
+	
+	                	Log.d(TAG, "Calendrier spécifié : " + findFolderResponse.getFolders().get(i).getDisplayName());
+	            	}
+	            	break;
+	            }
+	            
+	            response = service.findItem(specifiedFolder/*StandardFolder.CALENDAR*/, AppointmentPropertyPath.getAllPropertyPaths(), /*restriction3*/ restrict);
+            }
+            else
+            {
+            	response = null; //TODO important Traiter Calendrier créé de base
+            }
+            final ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+            
+            for (int i = 0; i < response.getItems().size(); i++)
+            {
+                if (response.getItems().get(i) instanceof Appointment)
+                {
+                    Appointment appointment = (Appointment) response.getItems().get(i);
+
+                    Log.d(TAG, "Subject = " + appointment.getSubject());
+                    Log.d(TAG, "StartTime = " + appointment.getStartTime());
+                    Log.d(TAG, "EndTime = " + appointment.getEndTime());
+                    Log.d(TAG, "Body Preview = " + appointment.getBodyPlainText());
+                    Log.d(TAG, "----------------------------------------------------------------");
+                    
+                    appointmentList.add(appointment);
+                }
+            }
+
+            return appointmentList;
+       }
+        catch (ServiceException e)
+        {
+        	Log.e(TAG, e.getMessage());
+        	Log.e(TAG, e.getXmlMessage());
+
+            e.printStackTrace();
+        }
+        /*catch (ParseException e)
+        {
+            e.printStackTrace();
+        }*/
+        
+        return null;
+    }
+    
     /**
      * Perform 2-way sync with the server-side contacts. We send a request that
      * includes all the locally-dirty contacts so that the server can process

@@ -1,6 +1,12 @@
 package com.looksync.android.views;
 
+import java.util.List;
+
 import com.looksync.android.R;
+import com.looksync.android.authenticator.ServiceExchange;
+import com.looksync.android.handlerCalendars.CalendarHandler;
+import com.looksync.android.handlerCalendars.CalendarOutlookHandler;
+import com.looksync.android.preferences.Preferences;
 
 //import android.accounts.AccountManager;
 import android.app.Activity;
@@ -67,7 +73,7 @@ public class SynchronizeTab extends Activity {
     
     
 	private RadioGroup mRadioGroup;
-	Service service;
+	ServiceExchange service = new ServiceExchange();
 	
 	public void onCreate(Bundle icicle) { //Bundle savedInstanceState //TODO important ! entrer dedans chaque fois qu'on accède à l'onglet Synchroniser et non que la première fois
         Log.i(TAG, "onCreate(" + icicle + ")");
@@ -97,12 +103,10 @@ public class SynchronizeTab extends Activity {
         
         
         
-        SharedPreferences prefs = PreferenceManager
-        	    .getDefaultSharedPreferences(SynchronizeTab.this);
-        
-        mServer = prefs.getString("serveur", "");
-        mUsername = prefs.getString("nom_utilisateur", "");
-        mPassword = prefs.getString("mdp", "");
+        Preferences prefs = new Preferences(SynchronizeTab.this);
+        mServer = prefs.getServeur();
+		mUsername = prefs.getNomUtilisateur();
+		mPassword = prefs.getMotDePasse();
         
         StringBuilder builder = new StringBuilder();
         builder.append("Server: " + mServer + "\n");
@@ -171,13 +175,9 @@ public class SynchronizeTab extends Activity {
             
             
             
-            //Service service = new Service("https://myserver/ews/Exchange.asmx", "username", "password");
-	    	//Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "LOOKSYNC\\Administrateur", "Utilisatéur428"); => faux
-            //Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428");
-            //ou : Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428", "LOOKSYNC");
             try
             {
-	            /*Service*/ service = new Service("https://" + mServer + "/ews/Exchange.asmx", mUsername, mPassword); //TODO actuellement ne va pas dans le catch si mauvais user/pwd
+            	service.setService(mServer, mUsername, mPassword);
 	            if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Successful authentication");
                 }
@@ -259,42 +259,66 @@ public class SynchronizeTab extends Activity {
         Log.i(TAG, "finishLogin()");
         
         
-        
         try
         {
-        	//Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428");
-        	
-            FindFolderResponse findFolderResponse = service.findFolder(StandardFolder.CALENDAR);
+            FindFolderResponse findFolderResponse = service.getService().findFolder(StandardFolder.CALENDAR);
 
+            RadioButton newRadioButton;
+            
             if(findFolderResponse.getFolders().size() > 0) {
                 mRadioGroup = (RadioGroup) findViewById(R.id.radio_group_calendriers); 
                 
 	            //List calendar folders
 	            for (int i = 0; i < findFolderResponse.getFolders().size(); i++)
 	            {
-	                Log.i(TAG, findFolderResponse.getFolders().get(i).getDisplayName());
-	                Log.i(TAG, findFolderResponse.getFolders().get(i).getFolderId().getId());
+	                Log.d(TAG, findFolderResponse.getFolders().get(i).getDisplayName());
+	                Log.d(TAG, findFolderResponse.getFolders().get(i).getFolderId().getId());
 	                
 	                //adding a radio button programmatically
-	                RadioButton newRadioButton = new RadioButton(this);
-	                newRadioButton.setText("Synchroniser " + findFolderResponse.getFolders().get(i).getDisplayName());
+	                newRadioButton = new RadioButton(this);
+	                newRadioButton.setText(findFolderResponse.getFolders().get(i).getDisplayName());
 	                /*newRadioButton.setId(i);
 	                LinearLayout.LayoutParams layoutParams = new RadioGroup.LayoutParams(
 	                        RadioGroup.LayoutParams.WRAP_CONTENT,
 	                        RadioGroup.LayoutParams.WRAP_CONTENT);*/
 	                mRadioGroup.addView(newRadioButton, 0/*, layoutParams*/);
 	            }
-	            
-	            mRadioGroup.setVisibility(View.VISIBLE);
             }
+            
+            newRadioButton = new RadioButton(this);
+            newRadioButton.setText("Calendrier");
+            mRadioGroup.addView(newRadioButton, 0);
+            
+            
+            
+
+            Preferences prefs = new Preferences(SynchronizeTab.this);
+        	String mCalendrier = prefs.getCalendrierParDefaut();
+        	Log.d(TAG, "Préférence calendrier : " + mCalendrier);
+        	
+        	RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_calendriers);
+        	int count = radioGroup.getChildCount();
+            //ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
+            for (int i=0;i<count;i++) {
+                View o = radioGroup.getChildAt(i);
+                if (o instanceof RadioButton) {
+                    //listOfRadioButtons.add((RadioButton)o);
+                	if(((RadioButton)o).getText().equals(mCalendrier)) {
+                		Log.d(TAG, "Calendrier coché suivant préférence : " + mCalendrier);
+                		((RadioButton)o).setChecked(true);
+                	}
+                }
+            }
+            
+            mRadioGroup.setVisibility(View.VISIBLE);
             
             Button mBtnSynchroniser = (Button) findViewById(R.id.btn_synchroniser_maintenant);
             mBtnSynchroniser.setEnabled(true);
         }
         catch (ServiceException e)
         {
-        	Log.i(TAG, e.getMessage());
-        	Log.i(TAG, e.getXmlMessage());
+        	Log.d(TAG, e.getMessage());
+        	Log.d(TAG, e.getXmlMessage());
 
             e.printStackTrace();
         }

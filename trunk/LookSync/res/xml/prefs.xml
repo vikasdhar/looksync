@@ -53,18 +53,16 @@
      android:title="Intervalle de synchronisation" />
      
   <ListPreference
-     android:entries="@array/liste_periode"
-     android:entryValues="@array/liste_periode"
+     android:entries="@array/liste_periode_options"
+     android:entryValues="@array/liste_periode_values"
      android:key="liste_periode"
      android:summary="Choisir la période à synchroniser"
      android:title="Période à synchroniser" />
   
   <ListPreference
-     android:entries="@array/liste_calendrier"
-     android:entryValues="@array/liste_calendrier"
      android:key="liste_calendrier"
      android:summary="Choisir un calendrier par défaut"
-     android:title="Calendrier par défaut" />
+     android:title="Calendrier par défaut"/>
   
  </PreferenceCategory>
 </PreferenceScreen>
