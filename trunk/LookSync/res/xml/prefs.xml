@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+ <PreferenceCategory
+   android:summary="Information"
+   android:title="Paramètres du compte Microsoft Outlook" >
+   
+  <EditTextPreference
+     android:key="serveur"
+     android:summary="Merci de renseigner votre serveur"
+     android:title="Serveur" 
+     android:singleLine="true"
+     android:minWidth="250dip"
+     android:scrollHorizontally="true"
+     android:capitalize="none"
+     android:autoText="false"/>
+  <EditTextPreference
+     android:key="nom_utilisateur"
+     android:summary="Merci de saisir votre nom d'utilisateur"
+     android:title="Nom d'utilisateur" 
+     android:singleLine="true"
+     android:minWidth="250dip"
+     android:scrollHorizontally="true"
+     android:capitalize="none"
+     android:autoText="false"/>
+  <EditTextPreference
+     android:key="mdp"
+     android:summary="Saisir votre mot de passe"
+     android:title="Mot de passe" 
+     android:inputType="textPassword"
+     android:singleLine="true"
+     android:minWidth="250dip"
+     android:scrollHorizontally="true"
+     android:capitalize="none"
+     android:autoText="false"
+     android:password="true"/>
+  
+ </PreferenceCategory>
+ 
+ <PreferenceCategory
+   android:summary="Information"
+   android:title="Options de synchronisation" > 
+   
+   <ListPreference
+     android:entries="@array/liste_sens"
+     android:entryValues="@array/liste_sens"
+     android:key="liste_sens"
+     android:summary="Choisir le sens de synchronisation"
+     android:title="Sens" />
+     
+  <EditTextPreference
+     android:key="intervalle"
+     android:summary="Saisir un intervalle de synchronisation"
+     android:title="Intervalle de synchronisation" />
+     
+  <ListPreference
+     android:entries="@array/liste_periode"
+     android:entryValues="@array/liste_periode"
+     android:key="liste_periode"
+     android:summary="Choisir la période à synchroniser"
+     android:title="Période à synchroniser" />
+  
+  <ListPreference
+     android:entries="@array/liste_calendrier"
+     android:entryValues="@array/liste_calendrier"
+     android:key="liste_calendrier"
+     android:summary="Choisir un calendrier par défaut"
+     android:title="Calendrier par défaut" />
+  
+ </PreferenceCategory>
+</PreferenceScreen>

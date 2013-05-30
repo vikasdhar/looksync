@@ -10,16 +10,16 @@ import android.util.Log;
  * Service to handle Account authentication. It instantiates the authenticator
  * and returns its IBinder.
  */
-public class AuthenticatorService extends Service{
+public class AuthenticatorService_test extends Service{
 	private static final String TAG = "LookSyncAuthenticationService"; //"AuthenticationService";
-	private Authenticator mAuthenticator;
+	private Authenticator_test mAuthenticator;
 
     @Override
     public void onCreate() {
         if (Log.isLoggable(TAG, Log.VERBOSE)) {
             Log.v(TAG, "LookSyncAuthenticationService Authentication Service started.");
         }
-        mAuthenticator = new Authenticator(this);
+        mAuthenticator = new Authenticator_test(this);
     }
 
     @Override

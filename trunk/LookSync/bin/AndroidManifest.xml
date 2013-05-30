@@ -32,7 +32,7 @@
         android:theme="@style/AppTheme" >
         <!-- The authenticator service -->
         <service
-            android:name="com.looksync.android.authenticator.AuthenticatorService"
+            android:name=".authenticator.AuthenticatorService_test"
             android:exported="true">
             <intent-filter>
                 <action
@@ -96,7 +96,11 @@
         <activity android:name=".views.SynchronizeProgressTab"></activity>
         <activity android:name=".views.SynchronizeRecapTab"></activity>
         <activity android:name=".views.HelpTab"></activity>
-        <activity android:name=".views.SettingsTab"></activity>
+        <activity android:name=".views.SettingsTab_ancien"></activity>
+        <activity
+			android:name=".views.PrefsTab"
+		    android:theme="@android:style/Theme.Black.NoTitleBar" >
+	  	</activity>
         <activity android:name=".views.AboutTab"></activity>
         
         

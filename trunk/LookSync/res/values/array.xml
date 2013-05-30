@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <resources>
+   <string-array name="liste_sens">
+     <item>Deux sens</item>
+     <item>Un sens : calendrier Android à calendrier Outlook</item>
+     <item>Un sens : calendrier Outlook à calendrier Android</item>
+   </string-array>
+   <string-array name="liste_periode">
+     <item>1 mois</item>
+     <item>2 mois</item>
+     <item>3 mois</item>
+     <item>6 mois</item>
+   </string-array>
+   <string-array name="liste_calendrier">
+     <item>TODO</item>
+   </string-array>
+ </resources>

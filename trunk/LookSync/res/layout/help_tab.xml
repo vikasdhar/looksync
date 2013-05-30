@@ -140,6 +140,18 @@
         android:layout_height="wrap_content"
         android:text="Cette application ne collecte ou n'envoie pas de données à des appareils étranger. Les données sont uniquement échangés entre votre téléphone portable et votre webmail Outlook."/>
 
+	<Button
+	     android:id="@+id/btn_a_propos"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:text="A propos de LookSync" />
+	 	
+	 <Button
+	     android:id="@+id/btn_logs"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:text="Voir les logs de la dernière synchronisation" 
+	     />
 </LinearLayout>
 
 </ScrollView>

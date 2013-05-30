@@ -46,7 +46,7 @@ public class TabAndroidActivity extends TabActivity {
                 .setContent(intent);
         tabHost.addTab(spec);
         
-        intent = new Intent().setClass(this, SettingsTab.class);
+        intent = new Intent().setClass(this, PrefsTab.class);
         spec = tabHost
                 .newTabSpec("Configuration")
                 .setIndicator("Réglages", res.getDrawable(android.R.drawable.ic_menu_manage))
