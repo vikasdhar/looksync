@@ -117,17 +117,6 @@ public class SynchronizeTab extends Activity {
         Log.i(TAG, builder.toString());
         
         handleLogin();
-        
-        
-        //listener du bouton Synchroniser
-        Button btnSynchroniser = (Button) findViewById(R.id.btn_synchroniser_maintenant);
-        btnSynchroniser.setOnClickListener(new View.OnClickListener() {
-    		//@Override
-    		public void onClick(View v) {
-                Intent myIntent = new Intent(SynchronizeTab.this, SynchronizeProgressTab.class);
-                startActivity(myIntent);
-            }
-        });
 	}    
         
     /*
@@ -311,6 +300,35 @@ public class SynchronizeTab extends Activity {
             }
             
             mRadioGroup.setVisibility(View.VISIBLE);
+                        
+            
+            //listener du bouton Synchroniser
+            Button btnSynchroniser = (Button) findViewById(R.id.btn_synchroniser_maintenant);
+            btnSynchroniser.setOnClickListener(new View.OnClickListener() {
+        		//@Override
+        		public void onClick(View v) {
+        			Intent myIntent = new Intent(SynchronizeTab.this, SynchronizeProgressTab.class);
+                    
+        			String calendrierASynchroniser = null;
+        	        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_calendriers); //TODO !!! autre activité
+        	        Log.d(TAG, "ici");
+        	    	int count = radioGroup.getChildCount();
+        	        for (int i=0;i<count;i++) {
+        	            View o = radioGroup.getChildAt(i);
+        	            if (o instanceof RadioButton) {
+        	            	if(((RadioButton)o).isChecked()) {
+        	            		calendrierASynchroniser = (String) ((RadioButton)o).getText();
+        	            		Log.d(TAG, "Calendrier coché au final : " + calendrierASynchroniser);
+        	            		break;
+        	            	}
+        	            }
+        	        }
+        	        myIntent.putExtra("calendrierCoche", calendrierASynchroniser);
+        			
+                    startActivity(myIntent);
+                }
+            });
+            
             
             Button mBtnSynchroniser = (Button) findViewById(R.id.btn_synchroniser_maintenant);
             mBtnSynchroniser.setEnabled(true);
