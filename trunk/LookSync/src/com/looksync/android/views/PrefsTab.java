@@ -28,9 +28,9 @@ public class PrefsTab extends PreferenceActivity{
 		   
 		   int nbFolders = findFolderResponse.getFolders().size();
 		   //CharSequence[] entries = { "One", "Two", "Three" };
-		   CharSequence[] entries = new String[nbFolders];
+		   CharSequence[] entries = new String[nbFolders + 1];
 		   //CharSequence[] entryValues = { "1", "2", "3" };
-		   CharSequence[] entryValues = new String[nbFolders];
+		   CharSequence[] entryValues = new String[nbFolders + 1];
 		   for (int i = 0; i < nbFolders; i++)
 	       {
 			   entries[i] = findFolderResponse.getFolders().get(i).getDisplayName();
