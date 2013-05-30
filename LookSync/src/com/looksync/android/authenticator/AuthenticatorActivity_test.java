@@ -165,7 +165,7 @@ public class AuthenticatorActivity_test extends AccountAuthenticatorActivity {
             //ou : Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", "Administrateur", "Utilisatéur428", "LOOKSYNC");
             try
             {
-	            Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", mUsername, mPassword); //TODO actuellement ne va pas dans le catch si mauvais user/pwd
+	            Service service = new Service("https://213.245.163.98/ews/Exchange.asmx", mUsername, mPassword);
 	            if (Log.isLoggable(TAG, Log.VERBOSE)) {
                     Log.v(TAG, "Successful authentication");
                 }

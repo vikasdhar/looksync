@@ -14,7 +14,6 @@ public class DetectUSB extends BroadcastReceiver
     private static final String TAG = "DetectUSB";
     @Override
     public void onReceive(Context context, Intent intent) {
-	    // TODO Auto-generated method stub
 	    if (intent.getAction().equalsIgnoreCase( "android.intent.action.UMS_CONNECTED"))
 	    {
 	        TextView textView = new TextView(context);
