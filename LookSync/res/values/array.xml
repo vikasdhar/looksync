@@ -5,13 +5,16 @@
      <item>Un sens : calendrier Android à calendrier Outlook</item>
      <item>Un sens : calendrier Outlook à calendrier Android</item>
    </string-array>
-   <string-array name="liste_periode">
+   <string-array name="liste_periode_values">
+     <item>-1</item>
+     <item>-3</item>
+     <item>-6</item>
+     <item>tout</item>
+   </string-array>
+   <string-array name="liste_periode_options">
      <item>1 mois</item>
-     <item>2 mois</item>
      <item>3 mois</item>
      <item>6 mois</item>
-   </string-array>
-   <string-array name="liste_calendrier">
-     <item>TODO</item>
+     <item>Tout</item>
    </string-array>
  </resources>

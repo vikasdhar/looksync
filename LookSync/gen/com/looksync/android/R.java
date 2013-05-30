@@ -9,8 +9,8 @@ package com.looksync.android;
 
 public final class R {
     public static final class array {
-        public static final int liste_calendrier=0x7f050002;
-        public static final int liste_periode=0x7f050001;
+        public static final int liste_periode_options=0x7f050002;
+        public static final int liste_periode_values=0x7f050001;
         public static final int liste_sens=0x7f050000;
     }
     public static final class attr {
@@ -197,7 +197,7 @@ public final class R {
         public static final int btn_annuler=0x7f0a0041;
         public static final int btn_enregistrer=0x7f0a0040;
         public static final int btn_logs=0x7f0a0014;
-        public static final int btn_synchroniser_maintenant=0x7f0a0059;
+        public static final int btn_synchroniser_maintenant=0x7f0a0058;
         public static final int but=0x7f0a0006;
         public static final int button_add=0x7f0a002e;
         public static final int button_add2=0x7f0a002f;
@@ -218,7 +218,7 @@ public final class R {
         public static final int intervalle_edit=0x7f0a003a;
         public static final int linearLayoutOnglet1=0x7f0a0001;
         public static final int logo=0x7f0a0002;
-        public static final int menu_settings=0x7f0a005a;
+        public static final int menu_settings=0x7f0a0059;
         public static final int message=0x7f0a0016;
         public static final int message_bottom=0x7f0a001a;
         public static final int minutes=0x7f0a003b;
@@ -239,7 +239,6 @@ public final class R {
         public static final int politique=0x7f0a0011;
         public static final int politique_descr=0x7f0a0012;
         public static final int progressBarSynchronisation=0x7f0a002a;
-        public static final int radio_calendrier_defaut=0x7f0a0058;
         public static final int radio_deux_sens=0x7f0a0036;
         public static final int radio_group_calendriers=0x7f0a0057;
         public static final int radio_group_sens=0x7f0a0035;

@@ -51,12 +51,12 @@
         android:layout_height="wrap_content"
         android:visibility="invisible">
 	    
-        <RadioButton
+        <!--<RadioButton
             android:id="@+id/radio_calendrier_defaut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Synchroniser Calendrier" />
+            android:text="Synchroniser Calendrier" />-->
 	    
     </RadioGroup>
 
