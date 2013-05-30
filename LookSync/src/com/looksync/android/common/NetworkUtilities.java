@@ -308,7 +308,7 @@ public class NetworkUtilities {
         	Restriction restrict = null;
         	if(mPeriode != "tout") {
             	Calendar now = Calendar.getInstance();
-	            now.add(Calendar.MONTH, -6); //TODO remettre Integer.parseInt(mPeriode)
+	            now.add(Calendar.MONTH, Integer.parseInt(mPeriode));
 	        	//Date startTime = dateFormat.parse("2011-04-15 00:00:00");
 	            Date startTime = now.getTime();
 	            Log.d(TAG, "Date de début période : " + startTime);
@@ -322,7 +322,7 @@ public class NetworkUtilities {
     		}
         	
             FindFolderResponse findFolderResponse = service.findFolder(StandardFolder.CALENDAR);
-            if(!calendrierASynchroniser.equals(calendrierASynchroniser))
+            if(!calendrierASynchroniser.equals("Calendrier"))
             {
 	            FolderId specifiedFolder = null;
 	            for (int i = 0; i < findFolderResponse.getFolders().size(); i++) {

@@ -49,26 +49,13 @@ public class SynchronizeProgressTab extends Activity {
         
     	
         //TODO important à mettre dans SyncAdapter
+        Log.d(TAG, "Calendrier coché et passé au final : " + getIntent().getStringExtra("calendrierCoche"));
         
-    	String calendrierASynchroniser = null;
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_calendriers); //TODO !!! autre activité
-        Log.d(TAG, "ici");
-    	int count = radioGroup.getChildCount();
-        for (int i=0;i<count;i++) {
-            View o = radioGroup.getChildAt(i);
-            if (o instanceof RadioButton) {
-            	if(((RadioButton)o).isChecked()) {
-            		calendrierASynchroniser = (String) ((RadioButton)o).getText();
-            		Log.d(TAG, "Calendrier coché au final : " + calendrierASynchroniser);
-            	}
-            }
-        }
-    	
         List<Appointment> events;
     	try { //TODO
 			events =
 		         NetworkUtilities.fetchAppointment(/*account, authtoken,
-		             mLastUpdated*/SynchronizeProgressTab.this, calendrierASynchroniser);
+		             mLastUpdated*/SynchronizeProgressTab.this, getIntent().getStringExtra("calendrierCoche"));
 		} catch (java.text.ParseException e) {
 			e.printStackTrace();
 		}
