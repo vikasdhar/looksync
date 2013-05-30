@@ -23,14 +23,14 @@ import com.looksync.android.common.NetworkUtilities;
  * This class is an implementation of AbstractAccountAuthenticator for
  * authenticating accounts //in the com.example.android.samplesync domain.
  */
-public class Authenticator extends AbstractAccountAuthenticator{
+public class Authenticator_test extends AbstractAccountAuthenticator{
 
 	// Contexte du service d'authentification
 	// Authentication Service context
     private Context mContext = null; //private final Context mContext;
     
     //initialisation du contexte
-	public Authenticator(Context context) {
+	public Authenticator_test(Context context) {
 		super(context);
 		mContext = context;
 	}
