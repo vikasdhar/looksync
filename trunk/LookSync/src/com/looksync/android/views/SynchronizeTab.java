@@ -310,7 +310,7 @@ public class SynchronizeTab extends Activity {
         			Intent myIntent = new Intent(SynchronizeTab.this, SynchronizeProgressTab.class);
                     
         			String calendrierASynchroniser = null;
-        	        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_calendriers); //TODO !!! autre activité
+        	        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_calendriers);
         	        Log.d(TAG, "ici");
         	    	int count = radioGroup.getChildCount();
         	        for (int i=0;i<count;i++) {
