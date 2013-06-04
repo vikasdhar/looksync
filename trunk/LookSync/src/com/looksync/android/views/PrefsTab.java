@@ -5,10 +5,13 @@ import com.independentsoft.exchange.Service;
 import com.independentsoft.exchange.ServiceException;
 import com.independentsoft.exchange.StandardFolder;
 import com.looksync.android.R;
+import com.looksync.android.preferences.Preferences;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class PrefsTab extends PreferenceActivity{
@@ -44,6 +47,16 @@ public class PrefsTab extends PreferenceActivity{
 		   ListPreference lp = (ListPreference)findPreference("liste_calendrier");
 		   lp.setEntries(entries);
 		   lp.setEntryValues(entryValues);
+		   
+		   
+		   //Preferences prefs = new Preferences(PrefsTab.this);
+		   //SharedPreferences sharedPreferences = prefs.getPrefs();
+		   //SharedPreferences.Editor editor = sharedPreferences.edit();
+		   //editor.apply();
+
+		   //SharedPreferences.Editor ed = prefs.getPrefs().edit();
+		   //ed.putString("greeting", "Hello there!");
+		   //ed.commit(); // true and preferences updated
 	   }
        catch (ServiceException e)
        {

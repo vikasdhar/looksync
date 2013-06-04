@@ -146,12 +146,12 @@
 	     android:layout_height="wrap_content"
 	     android:text="A propos de LookSync" />
 	 	
-	 <Button
+	 <!-- TODO <Button
 	     android:id="@+id/btn_logs"
 	     android:layout_width="fill_parent"
 	     android:layout_height="wrap_content"
 	     android:text="Voir les logs de la dernière synchronisation" 
-	     />
+	     />-->
 </LinearLayout>
 
 </ScrollView>
