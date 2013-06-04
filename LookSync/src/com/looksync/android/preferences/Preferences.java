@@ -16,6 +16,10 @@ public class Preferences {
 		prefs = PreferenceManager
         	    .getDefaultSharedPreferences(c);
 	}
+
+	public SharedPreferences getPrefs() {
+		return prefs;
+	}
 	
 	/*private String serveur;
 	

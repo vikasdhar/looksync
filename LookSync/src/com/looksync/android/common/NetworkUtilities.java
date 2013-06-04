@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 /*import android.content.Context;
 import android.os.Handler;*/
 import android.util.Log;
+import android.widget.TextView;
 
 
 import org.apache.http.HttpEntity;
@@ -51,6 +52,7 @@ import java.net.MalformedURLException; //
 import java.net.URL; //
 import java.util.ArrayList; //
 
+import com.looksync.android.R;
 import com.looksync.android.authenticator.ServiceExchange;
 import com.looksync.android.models.OutlookAppointmentModel;
 import com.looksync.android.preferences.Preferences;
@@ -289,7 +291,7 @@ public class NetworkUtilities {
      * @return list The list of updates received from the server.
      * @throws java.text.ParseException 
      */
-    public static List<Appointment> fetchAppointment(Context context, String calendrierASynchroniser) 
+    public static /*List<Appointment>*/ String fetchAppointment(Context context, String calendrierASynchroniser) 
     	throws ParseException {
     	
         try
@@ -320,7 +322,6 @@ public class NetworkUtilities {
 
 	            restrict = restriction1;
     		}
-        	
             FindFolderResponse findFolderResponse = service.findFolder(StandardFolder.CALENDAR);
             if(!calendrierASynchroniser.equals("Calendrier"))
             {
@@ -328,22 +329,24 @@ public class NetworkUtilities {
 	            for (int i = 0; i < findFolderResponse.getFolders().size(); i++) {
 	            	if(findFolderResponse.getFolders().get(i).getDisplayName().equals(calendrierASynchroniser)) {
 	            		specifiedFolder = findFolderResponse.getFolders().get(i).getFolderId();
-	
 	                	Log.d(TAG, "Calendrier spécifié : " + findFolderResponse.getFolders().get(i).getDisplayName());
+		            	break;
 	            	}
-	            	break;
 	            }
 	            
-	            response = service.findItem(specifiedFolder/*StandardFolder.CALENDAR*/, AppointmentPropertyPath.getAllPropertyPaths(), /*restriction3*/ restrict);
+	            Log.i(TAG, "Avant de recherche l'élément ...");
+            	response = service.findItem(specifiedFolder/*StandardFolder.CALENDAR*/, AppointmentPropertyPath.getAllPropertyPaths(), /*restriction3*/ restrict); //TODO
+            	Log.i(TAG, "Fin de recherche l'élément ...");
             }
-            else
+            else //(cherchera dans l'ensemble des calendriers)
             {
-            	response = null; //TODO important Traiter Calendrier créé de base
+            	response = null;
+            	//response = service.findItem(StandardFolder.CALENDAR, AppointmentPropertyPath.getAllPropertyPaths(), /*restriction3*/ restrict);
             }
             final ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
-            
+            String l_str = "";
             for (int i = 0; i < response.getItems().size(); i++)
-            {
+            {	Log.i(TAG, "ici6");
                 if (response.getItems().get(i) instanceof Appointment)
                 {
                     Appointment appointment = (Appointment) response.getItems().get(i);
@@ -354,11 +357,18 @@ public class NetworkUtilities {
                     Log.d(TAG, "Body Preview = " + appointment.getBodyPlainText());
                     Log.d(TAG, "----------------------------------------------------------------");
                     
+                    l_str = "Subject = " + appointment.getSubject() + "\n" +
+                    		"StartTime = " + appointment.getStartTime() + "\n" +
+                    		"EndTime = " + appointment.getEndTime() + "\n" +
+            				"Body Preview = " + appointment.getBodyPlainText() + "\n" +
+                			"----------------------------------------------------------------";
+                	
                     appointmentList.add(appointment);
                 }
             }
 
-            return appointmentList;
+            //return appointmentList;
+            return l_str;
        }
         catch (ServiceException e)
         {
@@ -373,6 +383,23 @@ public class NetworkUtilities {
         }*/
         
         return null;
+    }
+    private static final String DATE_TIME_FORMAT = "yyyy MMM dd, HH:mm:ss";
+    public static String getDateTimeStr(int p_delay_min) {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_TIME_FORMAT);
+		if (p_delay_min == 0) {
+			return sdf.format(cal.getTime());
+		} else {
+			Date l_time = cal.getTime();
+			l_time.setMinutes(l_time.getMinutes() + p_delay_min);
+			return sdf.format(l_time);
+		}
+	}
+    public static String getDateTimeStr(String p_time_in_millis) {
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_TIME_FORMAT);
+    	Date l_time = new Date(Long.parseLong(p_time_in_millis));
+    	return sdf.format(l_time);
     }
     
     /**

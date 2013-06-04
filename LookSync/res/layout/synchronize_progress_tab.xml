@@ -35,21 +35,21 @@
 	        android:textSize="20dp"/>
 	    
 	</RelativeLayout>
-    <ProgressBar
+    <!-- TODO <ProgressBar
         android:id="@+id/barre_progression"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="267dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dip" />
+        android:layout_marginTop="30dip" />-->
 
     <TextView
         android:id="@+id/synchronisation_en_cours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Synchronisation en cours ... (66,66 %)"
+        android:text="Synchronisation en cours ..."
         android:textStyle="bold" 
-        android:layout_gravity="center" />
+        android:layout_gravity="center" /><!-- TODO pourcentage -->
 
     <Button
         android:id="@+id/btn_annuler"
@@ -58,6 +58,72 @@
         android:text="Annuler"
         android:layout_gravity="center" 
         android:layout_marginTop="30dip"/>
+    
+    
+    
+    
+    
+    
+    <TextView 
+	    android:id="@+id/txtInfoRecupOutlook"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="Evenements récupérés via Outlook Web App : "
+	    android:textStyle="bold" 
+	    />
+    
+    <TextView 
+	    android:id="@+id/text_event_outlook"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/hello"
+	    />
+    
+    
+    
+    
+    
+    
+    
+    <TextView 
+	    android:id="@+id/txtInfoRecupOutlook"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="\n\n\nEvenements récupérés / ajoutés via calendrier Android : "
+	    android:textStyle="bold" 
+	    />
+    
+    <Spinner android:id="@+id/spinner_calendar"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		/>
+	<Button android:id="@+id/button_add"
+		android:layout_height="wrap_content"
+		android:layout_width="150px"
+		android:text="Add Event"
+		android:layout_gravity="center"
+		android:gravity="center"
+	/>
+	<Button android:id="@+id/button_add2"
+		android:layout_height="wrap_content"
+		android:layout_width="150px"
+		android:text="Add Event 2"
+		android:layout_gravity="center"
+		android:gravity="center"
+	/>
+	<Button android:id="@+id/button_get_events"
+		android:layout_height="wrap_content"
+		android:layout_width="150px"
+		android:text="Get Events"
+		android:layout_gravity="center"
+		android:gravity="center"
+	/>
+	<TextView  
+	    android:id="@+id/text_event"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/hello"
+	    />
  
 </LinearLayout>
 </ScrollView>
